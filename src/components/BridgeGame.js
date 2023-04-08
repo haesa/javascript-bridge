@@ -1,5 +1,6 @@
 const { Console } = require('@woowacourse/mission-utils');
 const OutputView = require('./OutputView');
+const InputView = require('./InputView');
 
 class BridgeGame {
   #index;
@@ -28,6 +29,14 @@ class BridgeGame {
 
   get result() {
     return this.#result;
+  }
+
+  set bridge(bridge) {
+    this.#bridge = bridge;
+  }
+
+  start() {
+    InputView.readBridgeSize(this);
   }
 
   init() {
