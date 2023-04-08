@@ -51,7 +51,7 @@ function crossBridge(answer, game) {
   }
 }
 
-function command(answer) {
+function command(answer, game) {
   try {
     Validation.gameCommand(answer);
     if (answer === 'R') {
