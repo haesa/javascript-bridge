@@ -2,7 +2,6 @@ const { Console } = require('@woowacourse/mission-utils');
 const { GAME_MESSAGE } = require('../constants/Constants');
 const { generate } = require('./BridgeRandomNumberGenerator');
 const { makeBridge } = require('./BridgeMaker');
-const BridgeGame = require('./BridgeGame');
 const Validation = require('./Validation');
 
 const InputView = {
