@@ -15,21 +15,7 @@ const InputView = {
     );
   },
   readGameCommand(game) {
-    Console.readLine(GAME_MESSAGE.RESTART, (answer) => {
-      try {
-        Validation.gameCommand(answer);
-        if (answer === 'R') {
-          game.retry(game);
-          InputView.readMoving(game);
-          return;
-        }
-
-        game.end(game);
-      } catch (e) {
-        Console.print(e.message);
-        InputView.readGameCommand(game);
-      }
-    });
+    Console.readLine(GAME_MESSAGE.RESTART, (answer) => command(answer, game));
   },
 };
 
@@ -63,6 +49,22 @@ function crossBridge(answer, game) {
   } catch (e) {
     Console.print(e.message);
     InputView.readMoving(game);
+  }
+}
+
+function command(answer) {
+  try {
+    Validation.gameCommand(answer);
+    if (answer === 'R') {
+      game.retry(game);
+      InputView.readMoving(game);
+      return;
+    }
+
+    game.end(game);
+  } catch (e) {
+    Console.print(e.message);
+    InputView.readGameCommand(game);
   }
 }
 module.exports = InputView;
