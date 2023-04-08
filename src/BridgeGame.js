@@ -7,12 +7,10 @@ class BridgeGame {
   #index;
   #map;
   #isSuccess;
-  #isFail;
   constructor(bridge) {
+    this.init();
     this.#bridge = bridge;
     this.#totalPlay = 1;
-    this.#index = 0;
-    this.#map = [[], []];
     this.#isSuccess = false;
   }
 
@@ -39,7 +37,6 @@ class BridgeGame {
   init() {
     this.#index = 0;
     this.#map = [[], []];
-    this.#isFail = false;
   }
 
   compare(answer) {
