@@ -1,5 +1,3 @@
-const { Console } = require('@woowacourse/mission-utils');
-const { GAME_MESSAGE } = require('../constants/Constants');
 const BridgeGame = require('./BridgeGame');
 
 class App {
@@ -8,7 +6,6 @@ class App {
     this.#game = new BridgeGame();
   }
   play() {
-    Console.print(GAME_MESSAGE.START);
     this.#game.start();
   }
 }

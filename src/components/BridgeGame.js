@@ -1,4 +1,5 @@
 const { Console } = require('@woowacourse/mission-utils');
+const { GAME_MESSAGE } = require('../constants/Constants');
 const OutputView = require('./OutputView');
 const InputView = require('./InputView');
 
@@ -36,6 +37,7 @@ class BridgeGame {
   }
 
   start() {
+    Console.print(GAME_MESSAGE.START);
     InputView.readBridgeSize(this);
   }
 
