@@ -7,18 +7,7 @@ const Validation = require('./Validation');
 
 const InputView = {
   readBridgeSize() {
-    Console.readLine(GAME_MESSAGE.LENGTH, (answer) => {
-      try {
-        Validation.bridgeSize(answer);
-        const bridge = makeBridge(Number(answer), generate);
-
-        Console.print('');
-        InputView.readMoving(new BridgeGame(bridge));
-      } catch (e) {
-        Console.print(e.message);
-        InputView.readBridgeSize();
-      }
-    });
+    Console.readLine(GAME_MESSAGE.LENGTH, bridgeSize);
   },
   readMoving(game) {
     Console.readLine(GAME_MESSAGE.MOVING, (answer) => {
@@ -61,4 +50,16 @@ const InputView = {
   },
 };
 
+function bridgeSize(answer) {
+  try {
+    Validation.bridgeSize(answer);
+    const bridge = makeBridge(Number(answer), generate);
+
+    Console.print('');
+    InputView.readMoving(new BridgeGame(bridge));
+  } catch (e) {
+    Console.print(e.message);
+    InputView.readBridgeSize();
+  }
+}
 module.exports = InputView;
