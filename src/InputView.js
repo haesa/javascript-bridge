@@ -40,11 +40,11 @@ function crossBridge(answer, game) {
       InputView.readGameCommand(game);
       return;
     }
-    if (game.index === game.bridge.length) {
-      game.end();
+    if (game.isEnd === false) {
+      InputView.readMoving(game);
       return;
     }
-    InputView.readMoving(game);
+    game.end();
   } catch (e) {
     Console.print(e.message);
     InputView.readMoving(game);

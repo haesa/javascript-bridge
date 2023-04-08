@@ -16,8 +16,8 @@ class BridgeGame {
     this.#isSuccess = false;
   }
 
-  get bridge() {
-    return this.#bridge;
+  get isEnd() {
+    return this.#index === this.#bridge.length;
   }
 
   get index() {
