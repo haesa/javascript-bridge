@@ -45,7 +45,7 @@ function crossBridge(answer, game) {
       return;
     }
 
-    game.end(game);
+    game.end();
   } catch (e) {
     Console.print(e.message);
     InputView.readMoving(game);
@@ -61,7 +61,7 @@ function command(answer) {
       return;
     }
 
-    game.end(game);
+    game.end();
   } catch (e) {
     Console.print(e.message);
     InputView.readGameCommand(game);

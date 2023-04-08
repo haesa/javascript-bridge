@@ -78,8 +78,8 @@ class BridgeGame {
     this.init();
   }
 
-  end(game) {
-    OutputView.printResult(game);
+  end() {
+    OutputView.printResult(this);
     Console.close();
   }
 }
