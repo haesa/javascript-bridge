@@ -56,7 +56,7 @@ function command(answer) {
   try {
     Validation.gameCommand(answer);
     if (answer === 'R') {
-      game.retry(game);
+      game.retry();
       InputView.readMoving(game);
       return;
     }
