@@ -2,56 +2,79 @@ const { Console } = require('@woowacourse/mission-utils');
 const OutputView = require('./OutputView');
 
 class BridgeGame {
+  #bridge;
+  #totalPlay;
+  #index;
+  #map;
+  #isEnd;
+  #isSuccess;
+  #isFail;
   constructor(bridge) {
-    this.bridge = bridge;
-    this.totalPlay = 1;
-    this.index = 0;
-    this.map = [[], []];
-    this.isEnd = false;
-    this.isSuccess = false;
+    this.#bridge = bridge;
+    this.#totalPlay = 1;
+    this.#index = 0;
+    this.#map = [[], []];
+    this.#isEnd = false;
+    this.#isSuccess = false;
+  }
+
+  get isEnd() {
+    return this.#isEnd;
+  }
+
+  get map() {
+    return this.#map;
+  }
+
+  get isSuccess() {
+    return this.#isSuccess;
+  }
+
+  get totalPlay() {
+    return this.#totalPlay;
   }
 
   init() {
-    this.index = 0;
-    this.map = [[], []];
-    this.isFail = false;
+    this.#index = 0;
+    this.#map = [[], []];
+    this.#isFail = false;
   }
 
   compare(answer) {
-    if (answer === 'U' && this.bridge[this.index] === 'U') {
+    if (answer === 'U' && this.#bridge[this.#index] === 'U') {
       return ['O', ' ', true];
     }
 
-    if (answer === 'U' && this.bridge[this.index] === 'D') {
+    if (answer === 'U' && this.#bridge[this.#index] === 'D') {
       return ['X', ' ', false];
     }
 
-    if (answer === 'D' && this.bridge[this.index] === 'U') {
+    if (answer === 'D' && this.#bridge[this.#index] === 'U') {
       return [' ', 'X', false];
     }
 
-    if (answer === 'D' && this.bridge[this.index] === 'D') {
+    if (answer === 'D' && this.#bridge[this.#index] === 'D') {
       return [' ', 'O', true];
     }
   }
 
   move(answer) {
     const [upCheck, downCheck, compare] = this.compare(answer);
-    const [up, down] = this.map;
+    const [up, down] = this.#map;
 
     up.push(upCheck);
     down.push(downCheck);
     OutputView.printMap([up, down]);
 
-    this.index += 1;
-    this.isEnd = this.index === this.bridge.length;
-    this.isSuccess = this.isEnd && compare;
+    this.#index += 1;
+    this.#isEnd = this.#index === this.#bridge.length;
+    this.#isSuccess = this.#isEnd && compare;
 
     return compare;
   }
 
   retry() {
-    this.totalPlay += 1;
+    this.#totalPlay += 1;
     this.init();
   }
 
