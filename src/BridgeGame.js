@@ -6,7 +6,6 @@ class BridgeGame {
   #totalPlay;
   #index;
   #map;
-  #isEnd;
   #isSuccess;
   #isFail;
   constructor(bridge) {
@@ -14,12 +13,15 @@ class BridgeGame {
     this.#totalPlay = 1;
     this.#index = 0;
     this.#map = [[], []];
-    this.#isEnd = false;
     this.#isSuccess = false;
   }
 
-  get isEnd() {
-    return this.#isEnd;
+  get bridge() {
+    return this.#bridge;
+  }
+
+  get index() {
+    return this.#index;
   }
 
   get map() {
@@ -67,8 +69,7 @@ class BridgeGame {
     OutputView.printMap([up, down]);
 
     this.#index += 1;
-    this.#isEnd = this.#index === this.#bridge.length;
-    this.#isSuccess = this.#isEnd && compare;
+    this.#isSuccess = this.#index === this.#bridge.length && compare;
 
     return compare;
   }
