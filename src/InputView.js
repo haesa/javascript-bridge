@@ -11,10 +11,9 @@ const InputView = {
       try {
         Validation.bridgeSize(answer);
         const bridge = makeBridge(Number(answer), generate);
-        const game = new BridgeGame(bridge);
 
         Console.print('');
-        InputView.readMoving(game);
+        InputView.readMoving(new BridgeGame(bridge));
       } catch (e) {
         Console.print(e.message);
         InputView.readBridgeSize();
