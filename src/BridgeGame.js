@@ -18,10 +18,6 @@ class BridgeGame {
     return this.#index === this.#bridge.length;
   }
 
-  get index() {
-    return this.#index;
-  }
-
   get map() {
     return this.#map;
   }
