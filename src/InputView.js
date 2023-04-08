@@ -10,25 +10,9 @@ const InputView = {
     Console.readLine(GAME_MESSAGE.LENGTH, bridgeSize);
   },
   readMoving(game) {
-    Console.readLine(GAME_MESSAGE.MOVING, (answer) => {
-      try {
-        Validation.moving(answer);
-
-        if (game.move(answer) === false) {
-          InputView.readGameCommand(game);
-          return;
-        }
-        if (game.isEnd === false) {
-          InputView.readMoving(game);
-          return;
-        }
-
-        game.end(game);
-      } catch (e) {
-        Console.print(e.message);
-        InputView.readMoving(game);
-      }
-    });
+    Console.readLine(GAME_MESSAGE.MOVING, (answer) =>
+      crossBridge(answer, game)
+    );
   },
   readGameCommand(game) {
     Console.readLine(GAME_MESSAGE.RESTART, (answer) => {
@@ -59,6 +43,26 @@ function bridgeSize(answer) {
   } catch (e) {
     Console.print(e.message);
     InputView.readBridgeSize();
+  }
+}
+
+function crossBridge(answer, game) {
+  try {
+    Validation.moving(answer);
+
+    if (game.move(answer) === false) {
+      InputView.readGameCommand(game);
+      return;
+    }
+    if (game.isEnd === false) {
+      InputView.readMoving(game);
+      return;
+    }
+
+    game.end(game);
+  } catch (e) {
+    Console.print(e.message);
+    InputView.readMoving(game);
   }
 }
 module.exports = InputView;
