@@ -6,12 +6,12 @@ class BridgeGame {
   #totalPlay;
   #index;
   #map;
-  #isSuccess;
+  #result;
   constructor(bridge) {
     this.init();
     this.#bridge = bridge;
     this.#totalPlay = 1;
-    this.#isSuccess = false;
+    this.#result = false;
   }
 
   get isEnd() {
@@ -26,8 +26,8 @@ class BridgeGame {
     return this.#map;
   }
 
-  get isSuccess() {
-    return this.#isSuccess;
+  get result() {
+    return this.#result;
   }
 
   get totalPlay() {
@@ -66,7 +66,7 @@ class BridgeGame {
     OutputView.printMap([up, down]);
 
     this.#index += 1;
-    this.#isSuccess = this.isEnd && compare;
+    this.#result = this.isEnd && compare;
 
     return compare;
   }

@@ -13,7 +13,7 @@ const OutputView = {
 
     OutputView.printMap(game.map);
 
-    Console.print(GAME_MESSAGE.SUCCESS(game.isSuccess));
+    Console.print(GAME_MESSAGE.SUCCESS(game.result));
     Console.print(GAME_MESSAGE.NUMBER_OF_TIMES(game.totalPlay));
   },
 };
