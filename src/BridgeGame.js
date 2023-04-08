@@ -2,10 +2,10 @@ const { Console } = require('@woowacourse/mission-utils');
 const OutputView = require('./OutputView');
 
 class BridgeGame {
-  #bridge;
-  #totalPlay;
   #index;
   #map;
+  #bridge;
+  #totalPlay;
   #result;
   constructor(bridge) {
     this.init();
@@ -22,17 +22,31 @@ class BridgeGame {
     return this.#map;
   }
 
-  get result() {
-    return this.#result;
-  }
-
   get totalPlay() {
     return this.#totalPlay;
+  }
+
+  get result() {
+    return this.#result;
   }
 
   init() {
     this.#index = 0;
     this.#map = [[], []];
+  }
+
+  move(answer) {
+    const [upCheck, downCheck, compare] = this.compare(answer);
+    const [up, down] = this.#map;
+
+    up.push(upCheck);
+    down.push(downCheck);
+    OutputView.printMap([up, down]);
+
+    this.#index += 1;
+    this.#result = this.isEnd && compare;
+
+    return compare;
   }
 
   compare(answer) {
@@ -51,20 +65,6 @@ class BridgeGame {
     if (answer === 'D' && this.#bridge[this.#index] === 'D') {
       return [' ', 'O', true];
     }
-  }
-
-  move(answer) {
-    const [upCheck, downCheck, compare] = this.compare(answer);
-    const [up, down] = this.#map;
-
-    up.push(upCheck);
-    down.push(downCheck);
-    OutputView.printMap([up, down]);
-
-    this.#index += 1;
-    this.#result = this.isEnd && compare;
-
-    return compare;
   }
 
   retry() {
