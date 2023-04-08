@@ -1,4 +1,4 @@
-const { CONDITION, ERROR_MESSAGE } = require('./Constants');
+const { CONDITION, ERROR_MESSAGE } = require('../constants/Constants');
 
 const Validation = {
   bridgeSize(answer) {

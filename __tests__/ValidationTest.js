@@ -1,5 +1,5 @@
-const Validation = require('../src/Validation');
-const { ERROR_MESSAGE } = require('../src/Constants');
+const Validation = require('../src/components/Validation');
+const { ERROR_MESSAGE } = require('../src/constants/Constants');
 
 describe('다리 길이 예외 테스트', () => {
   test('다리 길이가 양의 정수가 아니면 예외가 발생한다.', () => {

@@ -1,5 +1,5 @@
 const { Console } = require('@woowacourse/mission-utils');
-const { GAME_MESSAGE } = require('./Constants');
+const { GAME_MESSAGE } = require('../constants/Constants');
 
 const OutputView = {
   printMap([up, down]) {
