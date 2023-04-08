@@ -13,9 +13,8 @@ const InputView = {
     Console.readLine(GAME_MESSAGE.MOVING, (answer) => {
       try {
         Validation.moving(answer);
-        const move = game.move(answer);
 
-        if (move === false) {
+        if (game.move(answer) === false) {
           InputView.readGameCommand(game);
           return;
         }
