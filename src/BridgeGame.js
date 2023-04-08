@@ -69,7 +69,7 @@ class BridgeGame {
     OutputView.printMap([up, down]);
 
     this.#index += 1;
-    this.#isSuccess = this.#index === this.#bridge.length && compare;
+    this.#isSuccess = this.isEnd && compare;
 
     return compare;
   }
